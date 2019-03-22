@@ -59259,6 +59259,14 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
       message: [],
       user: [],
       color: []
+    },
+    typing: ''
+  },
+  watch: {
+    message: function message() {
+      Echo.private('chat').whisper('typing', {
+        name: this.message
+      });
     }
   },
   methods: {
@@ -59290,6 +59298,12 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
 
       _this2.chat.color.push('warning'); //console.log(e);
 
+    }).listenForWhisper('typing', function (e) {
+      if (e.name != '') {
+        _this2.typing = 'typing...';
+      } else {
+        _this2.typing = '';
+      }
     });
   }
 });
