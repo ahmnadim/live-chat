@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 
 Route::get('chat', 'ChatController@chat');
-Route::get('send', 'ChatController@send');
+Route::post('send', 'ChatController@send');
 
 Auth::routes();
 

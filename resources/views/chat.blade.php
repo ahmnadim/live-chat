@@ -22,7 +22,7 @@
 				<li class="list-group-item active">Chat</li>
 				<ul class="list-group " v-chat-scroll="{always: false, smooth: true}">
 
-				  <message v-for="msg in chat.message" :key="msg.id" color="success">
+				  <message v-for="msg,index in chat.message" :key="msg.id" :color="chat.color[index]" :user="chat.user[index]">
 				  	@{{ msg }}
 				  </message>
 				</ul>
