@@ -23,7 +23,7 @@
 				<div class="badge badge-pill badge-primary">@{{ typing }}</div>
 				<ul class="list-group " v-chat-scroll="{always: false, smooth: true}">
 
-				  <message v-for="msg,index in chat.message" :key="msg.id" :color="chat.color[index]" :user="chat.user[index]">
+				  <message v-for="msg,index in chat.message" :key="msg.id" :color="chat.color[index]" :user="chat.user[index]" :time="chat.time[index]">
 				  	@{{ msg }}
 				  </message>
 				</ul>

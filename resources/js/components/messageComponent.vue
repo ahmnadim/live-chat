@@ -1,6 +1,8 @@
 <template>
     <div>
-        <li class="list-group-item" :class="className"><slot></slot></li>
+        <li class="list-group-item" :class="className"><slot></slot>
+            <span id="time" class="badge badge-pill  float-right" :class="badgeClass">{{time}}</span>
+        </li>
         <small class="badge float-right" :class="badgeClass">{{user}}</small>
     </div>
 </template>
@@ -10,7 +12,8 @@
 
         props:[
             'color',
-            'user'
+            'user',
+            'time'
         ],
 
         computed:{
@@ -29,3 +32,5 @@
         }
     }
 </script>
+
+
