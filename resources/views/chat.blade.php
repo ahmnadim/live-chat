@@ -19,7 +19,7 @@
 	<div class="container">
 		<div class="row" id="app">
 			<div class="offset-4 col-4" >
-				<li class="list-group-item active">Chat</li>
+				<li class="list-group-item active">Chat <span class="badge badge-pill badge-danger"> @{{activeUsers}}</span></small></li>
 				<div class="badge badge-pill badge-primary">@{{ typing }}</div>
 				<ul class="list-group " v-chat-scroll="{always: false, smooth: true}">
 

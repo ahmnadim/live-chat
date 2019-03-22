@@ -12,6 +12,10 @@ window.Vue = require('vue');
 import VueChatScroll from 'vue-chat-scroll'
 Vue.use(VueChatScroll)
 
+import Toaster from 'v-toaster'
+import 'v-toaster/dist/v-toaster.css'
+Vue.use(Toaster, {timeout: 3000})
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -43,7 +47,8 @@ const app = new Vue({
     		time:[]
     	},
 
-    	typing:''
+    	typing:'',
+    	activeUsers:0
 
     },
 
@@ -99,5 +104,18 @@ const app = new Vue({
     	}
         
     });
+
+    Echo.join('chat')
+        .here((users) => {
+        	this.activeUsers = users.length;
+        })
+        .joining((user) => {
+        	this.activeUsers += 1;
+        	this.$toaster.success(user.name+' is active now!')
+        })
+        .leaving((user) => {
+        	this.activeUsers -= 1;
+        	this.$toaster.danger(user.name+' is gone offline!')
+        });
     }
 });
